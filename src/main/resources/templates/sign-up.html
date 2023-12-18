@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th= "www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mvc Application</title>
+</head>
+<body>
+User Sign Up
+<form method="post" action="/sign-up" th:object="${user}">
+    Email:<input name="username" th:field="*{username}">
+    Password:<input name="password" type="password" th:field="*{password}">
+    First Name:<input name="firstname" th:field="*{firstName}">
+    Last Name:<input nam="lastname" th:field="*{lastName}">
+    <button type="submit">Sign up</button>
+</form>
+</body>
+</html>
