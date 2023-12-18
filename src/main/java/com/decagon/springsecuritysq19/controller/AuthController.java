@@ -32,10 +32,17 @@ public class AuthController {
                 .addObject("user", new UserDto());
     }
 
+    @PostMapping("/login")
+    public String login(){
+        return "dashboard";
+    }
+    //TODO: I created the method. To handle PostMapping login processing.
     @GetMapping("/dashboard")
     public String dashBoard(){
         return "dashboard";
     }
+
+    //TODO: I made changes on the method above to handle login successUrl processing.
 
     @PostMapping("/sign-up")
     public String signUp(@ModelAttribute UserDto userDto){
@@ -43,6 +50,8 @@ public class AuthController {
         userService.saveUser.apply(userDto);
         return "index";
     }
+
+
 
     @GetMapping("/logout")
     public String logout(){

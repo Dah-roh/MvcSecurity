@@ -46,10 +46,12 @@ public class WebSecurityConfig {
     public SecurityFilterChain httpSecurity (HttpSecurity httpSecurity) throws Exception {
          return httpSecurity
                  .authorizeHttpRequests(httpRequest->
-                         httpRequest.requestMatchers("/", "/sign-up").permitAll())//permitting access to these endpoints without first authenticating or authorising.
-                 .formLogin(loginForm-> loginForm.loginPage("/")
-                         .successForwardUrl("/dashboard")
-                         .failureForwardUrl("/"))
+                         httpRequest.requestMatchers( "/login", "/", "/sign-up").permitAll())
+                 //  //TODO: I made changes on the above line to have "/login" endpoint permitted
+                 //permitting access to these endpoints without first authenticating or authorising.
+                 .formLogin(loginForm-> loginForm.loginPage("/login")
+                         //TODO: I made changes on the above line
+                         .loginProcessingUrl("/dashboard"))
                  .logout(logout->logout.logoutUrl("/logout"))
                  .cors(AbstractHttpConfigurer::disable)//Cross Origin Resource Sharing...disabling access to our resources(what are resources?) across(in and out) our application.
                  .csrf(AbstractHttpConfigurer::disable)//Cross Site Request Forgery...disabling other sites from creating elements(like iframe or even other html elements) in your application.
